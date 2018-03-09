@@ -1,0 +1,14 @@
+[
+  {
+    "name": "computer",
+    "className": "com.xiaoyiyiyo.entity.Computer"
+  },
+  {
+    "name": "cpu",
+    "className": "com.xiaoyiyiyo.entity.Cpu"
+  },
+  {
+    "name": "disk",
+    "className": "com.xiaoyiyiyo.entity.Disk"
+  }
+]

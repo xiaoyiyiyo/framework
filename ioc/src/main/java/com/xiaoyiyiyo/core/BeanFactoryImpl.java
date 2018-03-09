@@ -72,11 +72,12 @@ public class BeanFactoryImpl implements BeanFactory {
     }
 
     private void injectBean(Object bean) throws Exception {
+        // 注意是 super class
         Field[] fields = bean.getClass().getSuperclass().getDeclaredFields();
         if (fields != null && fields.length > 0) {
             for (Field field : fields) {
                 String beanName = field.getName();
-                beanName = StringUtils.capitalize(beanName);
+                beanName = StringUtils.uncapitalize(beanName);
                 if (beanNameSet.contains(field.getName())) {
                     Object fieldBean = getBean(beanName);
                     if (fieldBean != null) {

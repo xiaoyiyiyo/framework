@@ -10,7 +10,6 @@ import java.lang.reflect.Constructor;
  */
 public class BeanUtils {
 
-    private String string = "1";
     public static <T> T instanceByCglib(Class<T> clz, Constructor ctr, Object[] args) {
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(clz);
