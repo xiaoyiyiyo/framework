@@ -14,7 +14,7 @@ public class BeforeRunningAdviceInterceptor implements AopMethodInterceptor {
         this.advice = advice;
     }
 
-    public Object invoke(MethodInvocation mi) {
+    public Object invoke(MethodInvocation mi) throws Throwable {
         advice.before(mi.getMethod(), mi.getArguments(), mi);
         return mi.proceed();
     }

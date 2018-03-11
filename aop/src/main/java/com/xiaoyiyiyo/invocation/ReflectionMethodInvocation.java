@@ -1,6 +1,7 @@
 package com.xiaoyiyiyo.invocation;
 
 import com.xiaoyiyiyo.interceptor.AopMethodInterceptor;
+import com.xiaoyiyiyo.utils.ReflectionUtils;
 
 import java.lang.reflect.Method;
 import java.util.List;
@@ -10,15 +11,15 @@ import java.util.List;
  */
 public class ReflectionMethodInvocation implements ProxyMethodInvocation {
 
-    private final Object proxy;
+    protected final Object proxy;
 
-    private final Object target;
+    protected final Object target;
 
-    private final Method method;
+    protected final Method method;
 
-    private Object[] arguments = new Object[0];
+    protected Object[] arguments = new Object[0];
 
-    private final List<AopMethodInterceptor> interceptorList;
+    protected final List<AopMethodInterceptor> interceptorList;
 
     private int currentInterceptorIndex = -1;
 
@@ -30,6 +31,7 @@ public class ReflectionMethodInvocation implements ProxyMethodInvocation {
         this.arguments = arguments;
         this.interceptorList = interceptorList;
     }
+
 
     public Object getProxy() {
         return proxy;
@@ -43,7 +45,7 @@ public class ReflectionMethodInvocation implements ProxyMethodInvocation {
         return arguments;
     }
 
-    public Object proceed() {
+    public Object proceed() throws Throwable {
 
         if (currentInterceptorIndex == this.interceptorList.size() - 1) {
             return invokeOriginal();
@@ -53,7 +55,7 @@ public class ReflectionMethodInvocation implements ProxyMethodInvocation {
         return interceptor.invoke(this);
     }
 
-    protected Object invokeOriginal() {
-        return null;
+    protected Object invokeOriginal() throws Throwable {
+        return ReflectionUtils.invokeMethodUseReflection(target, method, arguments);
     }
 }

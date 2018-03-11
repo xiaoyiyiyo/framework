@@ -7,5 +7,5 @@ import com.xiaoyiyiyo.invocation.MethodInvocation;
  */
 public interface AopMethodInterceptor {
 
-    Object invoke(MethodInvocation mi);
+    Object invoke(MethodInvocation mi) throws Throwable;
 }

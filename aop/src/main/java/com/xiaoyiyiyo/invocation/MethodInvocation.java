@@ -11,5 +11,5 @@ public interface MethodInvocation {
 
     Object[] getArguments();
 
-    Object proceed();
+    Object proceed() throws Throwable;
 }
