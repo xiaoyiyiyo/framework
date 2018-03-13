@@ -1,4 +1,4 @@
-package com.xiaoyiyiyo.utils;
+package com.xiaoyiyiyo.aop.utils;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

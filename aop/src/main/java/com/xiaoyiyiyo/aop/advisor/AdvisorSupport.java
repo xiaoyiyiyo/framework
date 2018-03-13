@@ -1,6 +1,6 @@
-package com.xiaoyiyiyo.advisor;
+package com.xiaoyiyiyo.aop.advisor;
 
-import com.xiaoyiyiyo.interceptor.AopMethodInterceptor;
+import com.xiaoyiyiyo.aop.interceptor.AopMethodInterceptor;
 
 import java.util.LinkedList;
 import java.util.List;

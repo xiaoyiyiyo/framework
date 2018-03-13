@@ -1,6 +1,6 @@
-package com.xiaoyiyiyo.interceptor;
+package com.xiaoyiyiyo.aop.interceptor;
 
-import com.xiaoyiyiyo.invocation.MethodInvocation;
+import com.xiaoyiyiyo.aop.invocation.MethodInvocation;
 
 /**
  * Created by xiaoyiyiyo on 2018/3/10.

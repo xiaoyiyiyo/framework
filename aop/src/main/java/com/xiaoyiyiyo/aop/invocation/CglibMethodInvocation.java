@@ -1,6 +1,6 @@
-package com.xiaoyiyiyo.invocation;
+package com.xiaoyiyiyo.aop.invocation;
 
-import com.xiaoyiyiyo.interceptor.AopMethodInterceptor;
+import com.xiaoyiyiyo.aop.interceptor.AopMethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
 
 import java.lang.reflect.Method;

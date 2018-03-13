@@ -1,15 +1,20 @@
-package com.xiaoyiyiyo.bean;
+package com.xiaoyiyiyo.aop.bean;
+
+import com.xiaoyiyiyo.ioc.bean.BeanDefinition;
 
 import java.util.List;
 
 /**
  * Created by xiaoyiyiyo on 2018/3/11.
  */
-public class AopBeanDefinition extends BeanDefinition{
+public class AopBeanDefinition extends BeanDefinition {
 
     private String target;
 
     private List<String> interceptorNames;
+
+    public AopBeanDefinition() {
+    }
 
     public AopBeanDefinition(String target, List<String> interceptorNames) {
         this.target = target;

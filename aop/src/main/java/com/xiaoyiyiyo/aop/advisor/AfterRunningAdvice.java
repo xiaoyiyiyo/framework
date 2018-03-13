@@ -1,4 +1,4 @@
-package com.xiaoyiyiyo.advisor;
+package com.xiaoyiyiyo.aop.advisor;
 
 import java.lang.reflect.Method;
 
@@ -7,5 +7,5 @@ import java.lang.reflect.Method;
  */
 public interface AfterRunningAdvice extends Advice{
 
-    Object after(Object retureValue, Method method, Object[] args, Object target);
+    Object after(Object returnValue, Method method, Object[] args, Object target);
 }

@@ -1,10 +1,10 @@
-package com.xiaoyiyiyo.core;
+package com.xiaoyiyiyo.aop.core;
 
-import com.xiaoyiyiyo.advisor.*;
-import com.xiaoyiyiyo.bean.AopBeanDefinition;
-import com.xiaoyiyiyo.interceptor.AfterRunningAdviceInterceptor;
-import com.xiaoyiyiyo.interceptor.AopMethodInterceptor;
-import com.xiaoyiyiyo.interceptor.BeforeRunningAdviceInterceptor;
+import com.xiaoyiyiyo.aop.advisor.*;
+import com.xiaoyiyiyo.aop.bean.AopBeanDefinition;
+import com.xiaoyiyiyo.aop.interceptor.AfterRunningAdviceInterceptor;
+import com.xiaoyiyiyo.aop.interceptor.BeforeRunningAdviceInterceptor;
+import com.xiaoyiyiyo.ioc.core.BeanFactoryImpl;
 
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
@@ -34,6 +34,10 @@ public class AopBeanFactoryImpl extends BeanFactoryImpl {
             return aopBean;
         }
         return super.getBean(name);
+    }
+
+    protected void registerBean(String name, AopBeanDefinition aopBeanDefinition) {
+        aopBeanDefinitionMap.put(name, aopBeanDefinition);
     }
 
     public AdvisorSupport getAdvisorSupport(AopBeanDefinition aopBeanDefinition) throws Exception {
