@@ -1,0 +1,23 @@
+[
+  {
+    "name":"beforeMethod",
+    "className":"com.xiaoyiyiyo.aop.StartTimeBeforeMethod"
+  },
+  {
+    "name":"afterMethod",
+    "className":"com.xiaoyiyiyo.aop.EndTimeAfterMethod"
+  },
+  {
+    "name":"testService",
+    "className":"com.xiaoyiyiyo.aop.TestService"
+  },
+  {
+    "name":"testServiceProxy",
+    "className":"com.xiaoyiyiyo.aop.bean.ProxyFactoryBean",
+    "target":"testService",
+    "interceptorNames":[
+      "beforeMethod",
+      "afterMethod"
+    ]
+  }
+]
