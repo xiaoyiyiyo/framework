@@ -1,4 +1,4 @@
-package com.xiaoyiyiyo.utils;
+package com.xiaoyiyiyo.ioc.utils;
 
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.NoOp;

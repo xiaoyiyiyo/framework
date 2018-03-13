@@ -1,8 +1,8 @@
-package com.xiaoyiyiyo.core;
+package com.xiaoyiyiyo.ioc.core;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.xiaoyiyiyo.bean.BeanDefinition;
-import com.xiaoyiyiyo.utils.JsonUtils;
+import com.xiaoyiyiyo.ioc.bean.BeanDefinition;
+import com.xiaoyiyiyo.ioc.utils.JsonUtils;
 
 import java.io.InputStream;
 import java.util.List;

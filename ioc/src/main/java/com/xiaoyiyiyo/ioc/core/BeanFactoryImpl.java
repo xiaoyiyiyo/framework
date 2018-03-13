@@ -1,10 +1,10 @@
-package com.xiaoyiyiyo.core;
+package com.xiaoyiyiyo.ioc.core;
 
-import com.xiaoyiyiyo.bean.BeanDefinition;
-import com.xiaoyiyiyo.bean.ConstructorArg;
-import com.xiaoyiyiyo.utils.BeanUtils;
-import com.xiaoyiyiyo.utils.ClassUtils;
-import com.xiaoyiyiyo.utils.ReflectionUtils;
+import com.xiaoyiyiyo.ioc.bean.BeanDefinition;
+import com.xiaoyiyiyo.ioc.bean.ConstructorArg;
+import com.xiaoyiyiyo.ioc.utils.BeanUtils;
+import com.xiaoyiyiyo.ioc.utils.ClassUtils;
+import com.xiaoyiyiyo.ioc.utils.ReflectionUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.lang.reflect.Constructor;

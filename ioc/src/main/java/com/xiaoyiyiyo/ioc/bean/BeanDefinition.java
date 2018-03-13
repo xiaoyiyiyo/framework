@@ -1,4 +1,4 @@
-package com.xiaoyiyiyo.bean;
+package com.xiaoyiyiyo.ioc.bean;
 
 import java.util.List;
 

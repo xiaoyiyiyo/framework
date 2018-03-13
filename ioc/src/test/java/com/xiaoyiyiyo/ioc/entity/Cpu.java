@@ -1,4 +1,4 @@
-package com.xiaoyiyiyo.entity;
+package com.xiaoyiyiyo.ioc.entity;
 
 /**
  * Created by xiaoyiyiyo on 2018/3/9.

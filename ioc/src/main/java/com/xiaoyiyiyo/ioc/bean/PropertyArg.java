@@ -1,4 +1,4 @@
-package com.xiaoyiyiyo.bean;
+package com.xiaoyiyiyo.ioc.bean;
 
 /**
  * Created by xiaoyiyiyo on 2018/3/6.

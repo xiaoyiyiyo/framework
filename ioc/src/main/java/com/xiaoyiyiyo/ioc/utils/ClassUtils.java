@@ -1,4 +1,4 @@
-package com.xiaoyiyiyo.utils;
+package com.xiaoyiyiyo.ioc.utils;
 
 /**
  * Created by xiaoyiyiyo on 2018/3/7.

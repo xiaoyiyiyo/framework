@@ -1,7 +1,7 @@
-package com.xiaoyiyiyo;
+package com.xiaoyiyiyo.ioc;
 
-import com.xiaoyiyiyo.core.JsonApplicationContext;
-import com.xiaoyiyiyo.entity.Computer;
+import com.xiaoyiyiyo.ioc.core.JsonApplicationContext;
+import com.xiaoyiyiyo.ioc.entity.Computer;
 
 /**
  * Created by xiaoyiyiyo on 2018/3/9.
