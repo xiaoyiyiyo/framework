@@ -11,14 +11,14 @@ public class AopBeanDefinition extends BeanDefinition {
 
     private String target;
 
-    private List<String> interceptorNames;
+    private List<String> adviceNames;
 
     public AopBeanDefinition() {
     }
 
-    public AopBeanDefinition(String target, List<String> interceptorNames) {
+    public AopBeanDefinition(String target, List<String> adviceNames) {
         this.target = target;
-        this.interceptorNames = interceptorNames;
+        this.adviceNames = adviceNames;
     }
 
     public String getTarget() {
@@ -29,11 +29,11 @@ public class AopBeanDefinition extends BeanDefinition {
         this.target = target;
     }
 
-    public List<String> getInterceptorNames() {
-        return interceptorNames;
+    public List<String> getAdviceNames() {
+        return adviceNames;
     }
 
-    public void setInterceptorNames(List<String> interceptorNames) {
-        this.interceptorNames = interceptorNames;
+    public void setAdviceNames(List<String> adviceNames) {
+        this.adviceNames = adviceNames;
     }
 }

@@ -15,7 +15,7 @@
     "name":"testServiceProxy",
     "className":"com.xiaoyiyiyo.aop.bean.ProxyFactoryBean",
     "target":"testService",
-    "interceptorNames":[
+    "adviceNames":[
       "beforeMethod",
       "afterMethod"
     ]

@@ -42,10 +42,10 @@ public class AopBeanFactoryImpl extends BeanFactoryImpl {
 
     public AdvisorSupport getAdvisorSupport(AopBeanDefinition aopBeanDefinition) throws Exception {
         AdvisorSupport advisorSupport = new AdvisorSupport();
-        List<String> interceptorNames = aopBeanDefinition.getInterceptorNames();
-        if (interceptorNames != null && !interceptorNames.isEmpty()) {
-            for (String interceptorName : interceptorNames) {
-                Advice advice = (Advice) getBean(interceptorName);
+        List<String> adviceNames = aopBeanDefinition.getAdviceNames();
+        if (adviceNames != null && !adviceNames.isEmpty()) {
+            for (String adviceName : adviceNames) {
+                Advice advice = (Advice) getBean(adviceName);
 
                 if (advice instanceof BeforeRunningAdvice) {
                     advisorSupport.addAopMethodInterceptor(
