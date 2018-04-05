@@ -6,14 +6,10 @@
                            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
                             ">
 
-    <context:component-scan base-package="com.xiaoyiyiyo.*" />
-
-
     <bean id = "hello" class="com.xiaoyiyiyo.Hello" init-method="xml_init" destroy-method="xml_destroy">
         <property name="message" value="Hello World!" />
     </bean>
 
-    <bean class="com.xiaoyiyiyo.Hello" />
     <bean class="com.xiaoyiyiyo.BeanPostProcessorTest" />
     <bean class="com.xiaoyiyiyo.BeanFactoryPostProcessorTest" />
     <bean class="com.xiaoyiyiyo.InstanceBeanPostProcessor" />

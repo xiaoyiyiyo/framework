@@ -10,7 +10,7 @@ public class SpringTest {
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("classpath*:application*.xml");
         Hello obj = (Hello)context.getBean("hello");
-        System.out.println("Bean is working. Message = " + obj.getMessage());
+        System.out.println("14. ----> Bean is working. Message = " + obj.getMessage());
         ((ClassPathXmlApplicationContext)context).close();
     }
 }

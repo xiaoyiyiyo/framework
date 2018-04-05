@@ -9,6 +9,6 @@ import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
  */
 public class BeanFactoryPostProcessorTest implements BeanFactoryPostProcessor {
     public void postProcessBeanFactory(ConfigurableListableBeanFactory configurableListableBeanFactory) throws BeansException {
-        System.out.println("1.  ----> BeanFactoryPostProcessor.postProcessBeanFactory");
+        System.out.println("1. ----> BeanFactoryPostProcessor.postProcessBeanFactory");
     }
 }
