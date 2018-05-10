@@ -12,6 +12,6 @@ public class AppTest {
         aopApplicationContext.init();
 
         TestService testService = (TestService) aopApplicationContext.getBean("testServiceProxy");
-        testService.testMethod();
+        System.out.println(testService.testMethod("service"));
     }
 }

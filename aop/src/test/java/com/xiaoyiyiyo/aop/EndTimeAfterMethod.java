@@ -11,7 +11,6 @@ public class EndTimeAfterMethod implements AfterRunningAdvice {
 
     public Object after(Object returnValue, Method method, Object[] args, Object target) {
         long endTime = System.currentTimeMillis();
-        System.out.println("end time.");
         return returnValue;
     }
 }
