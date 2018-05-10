@@ -8,6 +8,14 @@ public class Computer {
 
     private Disk disk;
 
+    public Computer() {
+    }
+
+    public Computer(Cpu cpu, Disk disk) {
+        this.cpu = cpu;
+        this.disk = disk;
+    }
+
     public void work() {
         cpu.cal();
         disk.read();

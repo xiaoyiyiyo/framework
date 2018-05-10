@@ -35,7 +35,8 @@ public class BeanFactoryImpl implements BeanFactory {
 
         // 注入依赖的属性
         if (bean != null) {
-            injectBean(bean);
+            //自动注入了
+//            injectBean(bean);
 
             beanMap.put(name, bean);
         }
@@ -49,21 +50,20 @@ public class BeanFactoryImpl implements BeanFactory {
             throw new Exception("can not find bean by beanName: " + beanName);
         }
         List<ConstructorArg> constructorArgs = beanDefinition.getConstructorArgs();
+        List<Class> argClazzs = new ArrayList<Class>();
         if (constructorArgs != null && !constructorArgs.isEmpty()) {
             List<Object> objects = new ArrayList<Object>();
             for (ConstructorArg constructorArg : constructorArgs) {
                 if (constructorArg != null && constructorArg.getValue() != null) {
                     objects.add(constructorArg.getValue());
                 } else {
-                    objects.add(getBean(constructorArg.getRef()));
+                    String ref = constructorArg.getRef();
+                    argClazzs.add(ClassUtils.loadClass(beanDefineMap.get(ref).getClassName()));
+                    objects.add(getBean(ref));
                 }
             }
 
-            List<Class> listTmp = new ArrayList<Class>();
-            for (Object obj : objects) {
-                listTmp.add(obj.getClass());
-            }
-            Class[] constructorArgTypes = listTmp.toArray(new Class[]{});
+            Class[] constructorArgTypes = argClazzs.toArray(new Class[]{});
             Constructor constructor = clz.getConstructor(constructorArgTypes);
             return BeanUtils.instanceByCglib(clz, constructor, objects.toArray());
         } else {
