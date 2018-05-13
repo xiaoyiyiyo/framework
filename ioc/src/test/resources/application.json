@@ -1,7 +1,17 @@
 [
   {
     "name": "computer",
-    "className": "com.xiaoyiyiyo.ioc.entity.Computer"
+    "className": "com.xiaoyiyiyo.ioc.entity.Computer",
+    "constructorArgs" : [
+      {
+        "index" : 0,
+        "ref" : "cpu"
+      },
+      {
+        "index" : 1,
+        "ref" : "disk"
+      }
+    ]
   },
   {
     "name": "cpu",
@@ -10,14 +20,16 @@
   {
     "name": "disk",
     "className": "com.xiaoyiyiyo.ioc.entity.Disk",
+    "propertyArgs" : [
+      {
+        "name" : "size",
+        "value" : "30"
+      }
+    ],
     "constructorArgs" : [
       {
-      "index" : 0,
-      "ref" : "cpu"
-      },
-      {
-        "index" : 1,
-        "ref" : "disk"
+        "index" : 0,
+        "value" : "40"
       }
     ]
   }

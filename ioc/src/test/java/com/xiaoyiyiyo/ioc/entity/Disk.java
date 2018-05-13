@@ -5,7 +5,21 @@ package com.xiaoyiyiyo.ioc.entity;
  */
 public class Disk {
 
+    private String size;
+
+    public Disk(String size) {
+        this.size = size;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
     public void read() {
-        System.out.println("reading data...");
+        System.out.println("reading data...size = " + size);
     }
 }

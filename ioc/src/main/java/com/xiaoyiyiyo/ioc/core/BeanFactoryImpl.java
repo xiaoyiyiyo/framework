@@ -53,8 +53,15 @@ public class BeanFactoryImpl implements BeanFactory {
         if (clz == null) {
             throw new Exception("can not find bean by beanName: " + beanName);
         }
+
+        // 暂时默认只考虑第一个构造函数
+        Constructor[] cons=clz.getDeclaredConstructors();
+        if (cons.length == 0) {
+            throw new Exception("There is not existed a Constructor.");
+        }
+        Class[] parameterTypes=cons[0].getParameterTypes();
+
         List<ConstructorArg> constructorArgs = beanDefinition.getConstructorArgs();
-        List<Class> argClazzs = new ArrayList<Class>();
         if (constructorArgs != null && !constructorArgs.isEmpty()) {
             List<Object> objects = new ArrayList<Object>();
             for (ConstructorArg constructorArg : constructorArgs) {
@@ -63,7 +70,6 @@ public class BeanFactoryImpl implements BeanFactory {
                         objects.add(constructorArg.getValue());
                     } else {
                         String ref = constructorArg.getRef();
-                        argClazzs.add(ClassUtils.loadClass(beanDefineMap.get(ref).getClassName()));
                         objects.add(getBean(ref));
                     }
                 } else {
@@ -71,8 +77,7 @@ public class BeanFactoryImpl implements BeanFactory {
                 }
             }
 
-            Class[] constructorArgTypes = argClazzs.toArray(new Class[]{});
-            bean = BeanUtils.instanceByReflect(clz, constructorArgTypes, objects.toArray());
+            bean = BeanUtils.instanceByReflect(clz, parameterTypes, objects.toArray());
         } else {
             bean = BeanUtils.instanceByReflect(clz, null, null);
         }
@@ -87,7 +92,7 @@ public class BeanFactoryImpl implements BeanFactory {
         List<PropertyArg> properties = beanDefinition.getPropertyArgs();
 
         // 注意是 super class
-        Field[] fields = bean.getClass().getSuperclass().getDeclaredFields();
+        Field[] fields = bean.getClass().getDeclaredFields();
         Map<String, Field> fieldMap = new HashMap<>();
         for (Field field : fields) {
             fieldMap.put(field.getName(), field);

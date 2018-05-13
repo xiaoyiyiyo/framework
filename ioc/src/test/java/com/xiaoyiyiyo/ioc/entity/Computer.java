@@ -8,8 +8,8 @@ public class Computer {
 
     private Disk disk;
 
-    public Computer() {
-    }
+//    public Computer() {
+//    }
 
     public Computer(Cpu cpu, Disk disk) {
         this.cpu = cpu;
