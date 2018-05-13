@@ -9,7 +9,7 @@ public class PropertyArg {
 
     private String value;
 
-    private String typeName;
+    private String ref;
 
     public PropertyArg() {
     }
@@ -30,11 +30,11 @@ public class PropertyArg {
         this.value = value;
     }
 
-    public String getTypeName() {
-        return typeName;
+    public String getRef() {
+        return ref;
     }
 
-    public void setTypeName(String typeName) {
-        this.typeName = typeName;
+    public void setRef(String ref) {
+        this.ref = ref;
     }
 }

@@ -13,7 +13,6 @@ public class Test {
         JsonApplicationContext applicationContext = new JsonApplicationContext("application.json");
         applicationContext.init();
         Computer computer = (Computer) applicationContext.getBean("computer");
-
         computer.work();
 
     }

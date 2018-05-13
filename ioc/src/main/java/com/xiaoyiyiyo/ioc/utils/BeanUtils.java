@@ -22,4 +22,14 @@ public class BeanUtils {
         }
     }
 
+    public static <T> T instanceByReflect(Class<T> clz, Class[] argTypes, Object[] args) throws Exception {
+
+        if (argTypes == null) {
+            return  (T) clz.newInstance();
+        }
+
+        Constructor constructor = clz.getConstructor(argTypes);
+
+        return (T) constructor.newInstance(args);
+    }
 }

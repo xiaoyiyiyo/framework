@@ -2,6 +2,7 @@ package com.xiaoyiyiyo.ioc.core;
 
 import com.xiaoyiyiyo.ioc.bean.BeanDefinition;
 import com.xiaoyiyiyo.ioc.bean.ConstructorArg;
+import com.xiaoyiyiyo.ioc.bean.PropertyArg;
 import com.xiaoyiyiyo.ioc.utils.BeanUtils;
 import com.xiaoyiyiyo.ioc.utils.ClassUtils;
 import com.xiaoyiyiyo.ioc.utils.ReflectionUtils;
@@ -44,6 +45,9 @@ public class BeanFactoryImpl implements BeanFactory {
     }
 
     public Object createBean(BeanDefinition beanDefinition) throws Exception {
+
+        Object bean = null;
+
         String beanName = beanDefinition.getClassName();
         Class clz = ClassUtils.loadClass(beanName);
         if (clz == null) {
@@ -54,34 +58,63 @@ public class BeanFactoryImpl implements BeanFactory {
         if (constructorArgs != null && !constructorArgs.isEmpty()) {
             List<Object> objects = new ArrayList<Object>();
             for (ConstructorArg constructorArg : constructorArgs) {
-                if (constructorArg != null && constructorArg.getValue() != null) {
-                    objects.add(constructorArg.getValue());
+                if (constructorArg != null ) {
+                    if (constructorArg.getValue() != null) {
+                        objects.add(constructorArg.getValue());
+                    } else {
+                        String ref = constructorArg.getRef();
+                        argClazzs.add(ClassUtils.loadClass(beanDefineMap.get(ref).getClassName()));
+                        objects.add(getBean(ref));
+                    }
                 } else {
-                    String ref = constructorArg.getRef();
-                    argClazzs.add(ClassUtils.loadClass(beanDefineMap.get(ref).getClassName()));
-                    objects.add(getBean(ref));
+                    throw new Exception("An constructor param can't be null.");
                 }
             }
 
             Class[] constructorArgTypes = argClazzs.toArray(new Class[]{});
-            Constructor constructor = clz.getConstructor(constructorArgTypes);
-            return BeanUtils.instanceByCglib(clz, constructor, objects.toArray());
+            bean = BeanUtils.instanceByReflect(clz, constructorArgTypes, objects.toArray());
         } else {
-            return BeanUtils.instanceByCglib(clz, null, null);
+            bean = BeanUtils.instanceByReflect(clz, null, null);
         }
+
+        //set注入
+        injectField(bean, beanDefinition);
+        return bean;
     }
 
-    private void injectBean(Object bean) throws Exception {
+    private void injectField(Object bean, BeanDefinition beanDefinition) throws Exception {
+
+        List<PropertyArg> properties = beanDefinition.getPropertyArgs();
+
         // 注意是 super class
         Field[] fields = bean.getClass().getSuperclass().getDeclaredFields();
-        if (fields != null && fields.length > 0) {
-            for (Field field : fields) {
-                String beanName = field.getName();
-                beanName = StringUtils.uncapitalize(beanName);
-                if (beanNameSet.contains(field.getName())) {
-                    Object fieldBean = getBean(beanName);
-                    if (fieldBean != null) {
-                        ReflectionUtils.injectField(field,bean,fieldBean);
+        Map<String, Field> fieldMap = new HashMap<>();
+        for (Field field : fields) {
+            fieldMap.put(field.getName(), field);
+        }
+
+        if (properties != null) {
+            for (PropertyArg property : properties) {
+                String name = property.getName();
+                if (fieldMap.containsKey(name)) {
+                    String value = property.getValue();
+                    String ref = property.getRef();
+                    if (!StringUtils.isEmpty(value) && !StringUtils.isEmpty(ref)) {
+                        throw new Exception("Property is only allowed to contain either 'ref' attribute OR 'value' attribute.");
+                    }
+
+                    name = StringUtils.uncapitalize(name);
+                    if (!StringUtils.isEmpty(value)) {
+                      ReflectionUtils.injectField(fieldMap.get(name), bean, value);
+                    }
+
+                    if (!StringUtils.isEmpty(ref)) {
+                        if (beanNameSet.contains(name)) {
+                            Object fieldBean = getBean(ref);
+                            if (fieldBean != null) {
+                                ReflectionUtils.injectField(fieldMap.get(name),bean,fieldBean);
+                            }
+                        }
                     }
                 }
             }
