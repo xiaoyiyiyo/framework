@@ -2,6 +2,7 @@ package com.xiaoyiyiyo.aop.core;
 
 import com.xiaoyiyiyo.aop.advisor.*;
 import com.xiaoyiyiyo.aop.bean.AopBeanDefinition;
+import com.xiaoyiyiyo.aop.core.cglib.CglibAopProxy;
 import com.xiaoyiyiyo.aop.interceptor.AfterRunningAdviceInterceptor;
 import com.xiaoyiyiyo.aop.interceptor.BeforeRunningAdviceInterceptor;
 import com.xiaoyiyiyo.ioc.core.BeanFactoryImpl;

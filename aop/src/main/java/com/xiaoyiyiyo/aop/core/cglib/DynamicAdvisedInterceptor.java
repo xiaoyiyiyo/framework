@@ -1,4 +1,4 @@
-package com.xiaoyiyiyo.aop.core;
+package com.xiaoyiyiyo.aop.core.cglib;
 
 import com.xiaoyiyiyo.aop.advisor.TargetSource;
 import com.xiaoyiyiyo.aop.interceptor.AopMethodInterceptor;

@@ -1,6 +1,7 @@
-package com.xiaoyiyiyo.aop.core;
+package com.xiaoyiyiyo.aop.core.cglib;
 
 import com.xiaoyiyiyo.aop.advisor.AdvisorSupport;
+import com.xiaoyiyiyo.aop.core.AopProxy;
 import com.xiaoyiyiyo.ioc.utils.ClassUtils;
 import net.sf.cglib.proxy.Callback;
 import net.sf.cglib.proxy.Enhancer;
